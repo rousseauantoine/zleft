@@ -1,0 +1,6 @@
+-Rajouter .zip du tuto
+-Rajouter html du tuto
+-Rajouter doc explicative sur archi et sécurité
+-Rajouter commentaire sur les méthodes et vérifier compatibilité PSR
+-Compatibilité W3C
+-Indentation

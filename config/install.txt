@@ -1,0 +1,21 @@
+-Check that the PHP version is 5.3 minimum
+-Create database zleft and import db/zleft.sql
+-update config/config.ini (don't set a SQL user with admin access)
+-Allow mod_rewrite:
+	Open httpd.conf, uncomment 
+	LoadModule rewrite_module modules/mod_rewrite.so
+	Find all occurrences of AllowOverride None	and change to
+	AllowOverride All
+-update config/config.ini
+
+-HTML Purifier will write out cache files for HTMLDefinition in the subdirectories of HTMLPurifier/DefinitionCache/Serializer. If you are in the library/ folder of HTML Purifier, you can set the appropriate permissions using:
+ chmod -R 0755 HTMLPurifier/DefinitionCache/Serializer
+ If the above command doesn't work, you may need to assign write permissions to all. This may be necessary if your webserver runs as nobody, but is not recommended since it means any other user can write files in the directory. Use:
+ chmod -R 0777 HTMLPurifier/DefinitionCache/Serializer
+ You can also chmod files via your FTP client; this option is usually accessible by right clicking the corresponding directory and then selecting “chmod” or “file permissions”.
+ If you are unable or unwilling to give write permissions to the cache directory, you can either disable the cache (and suffer a performance hit):
+ $config->set('Core', 'DefinitionCache', null);
+ Or move the cache directory somewhere else (no trailing slash):
+ $config->set('Cache', 'SerializerPath', '/home/user/absolute/path');
+
+-From time to time http://htmlpurifier.org/docs/dev-flush.html

@@ -1,0 +1,7 @@
+-Framework de base
+    o Full MVC object
+    o Front Controller
+    o Dev/Prod error mode
+    o Error management
+-Plugin
+	HtmlPurifier

@@ -1,0 +1,5 @@
+#####core#####
+# Rewrite URL xxx/yyy/zzz in index.php?ctrl=xxx&action=yyy&id=zzz
+RewriteEngine on
+RewriteRule ^([a-zA-Z]*)/?([a-zA-Z]*)?/?([a-zA-Z0-9]*)?/?$ index.php?ctrl=$1&action=$2&id=$3 [NC,L]
+#####!core#####
