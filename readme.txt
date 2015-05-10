@@ -3,5 +3,3 @@
     o Front Controller
     o Dev/Prod error mode
     o Error management
--Plugin
-	HtmlPurifier

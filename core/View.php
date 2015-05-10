@@ -1,7 +1,6 @@
 <?php
 
 require_once 'Configuration.php';
-require_once 'plugins/htmlpurifier/HTMLPurifier.standalone.php';
 
 //Class managing the generation of the views 
 class View 
@@ -22,43 +21,11 @@ class View
 	// Special js file for a view
 	private $js = array();
 
-    // Object used to sanitize HTML upon display
-    private $purifier;
-
-    // Configuration of the purifier
-    private $configPurifier;
-
 
 	public function __construct($action)
 	{
         $this->filename = 'views/' . $action . 'View.php';
-
-        $this->configurePurifier();
-        $this->purifier = new HTMLPurifier($this->configPurifier);
 	}
-
-
-    // Set options to the purifier
-    public function configurePurifier(){
-        // http://htmlpurifier.org/live/configdoc/plain.html
-        $this->configPurifier = HTMLPurifier_Config::createDefault();
-
-        // If enabled, nofollow rel attributes are added to all outgoing links.
-        $this->configPurifier->set('HTML.Nofollow', true);
-
-        // Whitelist that defines the schemes that a URI is allowed to have.
-        $this->configPurifier->set('URI.AllowedSchemes', array (
-            'http' => true,
-            'https' => true
-        ));
-
-        // Whitelist of allowed tags
-        $this->configPurifier->set('HTML.AllowedElements', 'a,p,div,ul,li,blockquote,span,h1,h2,h3,h4,h5,h6,i,br,del,sub,sup,table,tr,td,img');
-
-        // Set attributes for each tag
-        $this->configPurifier->set('HTML.AllowedAttributes', 'a.href,a.title,td.colspan,td.rowspan,img.src,img.alt');
-    }
-
 
 	// Generates and displays the view
 	public function generateView($data)
@@ -108,8 +75,8 @@ class View
     // Cleans a user entry
     private function clean($value)
     {
-        return $this->purifier->purify($value);
-    }
+        return strip_tags($value);
+	}
 
 }
 
