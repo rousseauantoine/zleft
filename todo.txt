@@ -4,3 +4,4 @@
 -Rajouter commentaire sur les méthodes et vérifier compatibilité PSR
 -Compatibilité W3C
 -Indentation
+
