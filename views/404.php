@@ -48,6 +48,6 @@
     <?php
         }
     ?>
-    <script src="scripts/jquery-2.0.3.min.js"></script>
+    <script src="<?php echo Configuration::get('jQuery'); ?>"></script>
 </body>
 </html>
