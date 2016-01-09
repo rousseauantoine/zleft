@@ -1,9 +1,4 @@
 -Check that the PHP version is 5.3 minimum
 -Create database zleft and import db/zleft.sql
 -update config/config.ini (don't set a SQL user with admin access)
--Allow mod_rewrite:
-	Open httpd.conf, uncomment 
-	LoadModule rewrite_module modules/mod_rewrite.so
-	Find all occurrences of AllowOverride None	and change to
-	AllowOverride All
--update config/config.ini
+-Allow module mod_rewrite (check with phpinfo()) and open the .conf file (httpd.conf or apache2.conf) and, for the root directory, set 	AllowOverride All

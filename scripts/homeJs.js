@@ -16,7 +16,7 @@ function init(){
                 $('#numberEntries').html(data.output);
             },
             error: function (data) {
-                alert('non');
+                alert('Failure');
             }
         });
     });
