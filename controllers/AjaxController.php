@@ -19,7 +19,7 @@ class AjaxController extends Controller
 	public function getNumberEntries()
 	{
 		$nb = $this->entry->getNumberEntries();
-		$output = $this->renderAjax('ajaxNumberEntries', array('nb' => $nb));
+		$output = $this->render('ajaxNumberEntries', array('nb' => $nb), true);
         $this->json['output'] = $output;
 	}
 
