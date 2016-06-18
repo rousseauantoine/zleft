@@ -28,24 +28,22 @@ class View
 	}
 
 	// Generates and displays the view
-	public function generateView($data)
+	public function generateView($data, $ajax)
 	{
 		// Specific part of the view
 		$content = $this->generateFile($this->filename, $data);
-		$root = Configuration::get("root", "/");
+        if($ajax) {
+            return $content;
+        }
+        else {
+            $root = Configuration::get("root", "/");
 
-		//Include in the common layout
-		$view = $this->generateFile('views/layout.php',	array('viewTitle' => $this->viewTitle, 'css' => $this->css,
-				                    'js' => $this->js, 'meta' => $this->meta, 'content' => $content, 'root' => $root));
-		echo $view;
+            //Include in the common layout
+            $content = $this->generateFile('views/layout.php', array('viewTitle' => $this->viewTitle, 'css' => $this->css,
+                'js' => $this->js, 'meta' => $this->meta, 'content' => $content, 'root' => $root));
+        }
+		echo $content;
 	}
-
-
-    // Generates and displays the view asked by an ajax call
-    public function generateAjaxView($data)
-    {
-        return $this->generateFile($this->filename, $data);
-    }
 
     // Generates and displays the 404
     public function throw404($data)

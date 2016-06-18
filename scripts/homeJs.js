@@ -9,8 +9,7 @@ function init(){
             type: "POST",
             dataType:'json',
             data: {
-                do: "getNumberEntries",
-                message: "Hello"
+                do: "getNumberEntries"
             },
             success: function(data){
                 $('#numberEntries').html(data.output);

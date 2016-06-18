@@ -29,31 +29,22 @@ abstract class Controller
 			$this->{$this->action}();
 		}
 		else {
-			$classController = get_class($this);
-			throw new Exception("Action '$action' not defined in class $classController");
+			throw new Exception("Action '$action' not defined in class ". get_class($this));
 		}
 	}
 
 
 	// Abstract method corresponding to default action
-	// Forces derived classes to implement this action by default
+	// Forces derived classes to implement this action
 	public abstract function index();
 
 
 	// Displays the view $viewName with the data $dataView
-	protected function render($viewName, $dataView = array())
+	protected function render($viewName, $dataView = array(), $ajax = false)
 	{
 		$view = new View($viewName);
-		$view->generateView($dataView);
+		return $view->generateView($dataView, $ajax);
 	}
-
-
-    // Returns the view $viewName with the data $dataView
-    protected function renderAjax($viewName, $dataView = array())
-    {
-        $view = new View($viewName);
-        return $view->generateAjaxView($dataView);
-    }
 
 }
 
