@@ -62,7 +62,7 @@ class Router
         $error404Controller = new Error404Controller();
         $error404Controller->setRequest($request);
         if(Configuration::get('displayExceptions')){
-            $error404Controller->devMode($exception);
+            $error404Controller->index($exception);
         }else{
             $error404Controller->index();
         }

@@ -13,7 +13,7 @@
 
     <p>Error
         <?php
-            if(isset($message)){
+            if($message != ''){
                 echo ' - ' . $message;
             }
         ?>
