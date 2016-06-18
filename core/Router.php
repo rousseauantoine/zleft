@@ -2,6 +2,7 @@
 
 require_once 'core/Request.php';
 require_once 'core/View.php';
+require_once 'core/Controller.php';
 
 class Router
 {
@@ -28,7 +29,7 @@ class Router
 		$controller = 'Home';  // default
 		if ($request->isSetParameter('ctrl')) {
 			$controller = $request->getParameter('ctrl');
-			$controller = ucfirst(strtolower($controller));
+			$controller = ucfirst($controller);
 		}
 		// Controller's file name
 		$classController = $controller . 'Controller';

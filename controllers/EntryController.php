@@ -2,7 +2,6 @@
 
 require_once 'models/EntryModel.php';
 require_once 'models/CommentModel.php';
-require_once 'core/Controller.php';
 
 class EntryController extends Controller
 {

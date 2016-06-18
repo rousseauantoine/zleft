@@ -46,7 +46,7 @@ class View
 	}
 
     // Generates and displays the 404
-    public function throw404($data)
+    public function throw404($data = array())
     {
         $data['root'] = Configuration::get('root', '/');
         $view = $this->generateFile('views/404.php', $data);

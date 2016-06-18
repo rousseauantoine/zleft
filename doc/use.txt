@@ -1,0 +1,5 @@
+-Controller Home, 404 are compulsory
+-views layout, 404 are compulsory
+
+-Ajax calls-
+When calling render() method in the action, set third parameter to true
