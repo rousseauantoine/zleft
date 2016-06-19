@@ -1,30 +1,19 @@
 <?php
 
-require_once 'models/EntryModel.php';
-
 class HomeController extends Controller
 {
 
-	private $entry;
-
-
-	public function __construct() 
-	{
-		$this->entry = new EntryModel();
-	}
-
+    function index()
+    {
+        $this->returnAllEntries();
+    }
 
 	// Displays all the entries
 	function returnAllEntries() 
 	{
-		$entries = $this->entry->getEntries();
+        $model = Model::getInstance('Entry');
+		$entries = $model->getEntries();
 		$this->render('home', array('entries' => $entries));
-	}
-
-
-	function index()
-	{
-		$this->returnAllEntries();
 	}
 
 }

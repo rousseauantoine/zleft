@@ -34,5 +34,17 @@ abstract class Model
 		return self::$db;
 	}
 
+    public static function getInstance($modelName){
+        $classModel = $modelName . 'Model';
+        $fileModel = 'models/' . $classModel . '.php';
+
+        if (file_exists($fileModel)) {
+            require_once($fileModel);
+            return new $classModel();
+        }
+        else
+            throw new Exception("File '$classModel' not found");
+    }
+
 }
 

@@ -1,17 +1,8 @@
 <?php
 
-require_once 'models/EntryModel.php';
-
 class AjaxHomeController extends Controller
 {
-
-    private $entry;
     private $json;
-
-    public function __construct()
-    {
-        $this->entry = new EntryModel();
-    }
 
     //dispatch of the actions
     public function index() {
@@ -30,9 +21,8 @@ class AjaxHomeController extends Controller
     // Displays the entry of id $idEntry
     public function getNumberEntries()
     {
-        $nb = $this->entry->getNumberEntries();
-        $output = $this->render('ajaxNumberEntries', array('nb' => $nb), true);
-        $this->json['output'] = $output;
+        $nb = Model::getInstance('Entry')->getNumberEntries();
+        $this->json['output'] = $this->render('ajaxNumberEntries', array('nb' => $nb), true);
     }
 
 }
