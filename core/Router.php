@@ -26,7 +26,7 @@ class Router
 	// Creates appropriate controller depending on the received request
 	private function createController(Request $request)
 	{
-		$controller = 'Home';  // default
+		$controller = 'Index';  // default
 		if ($request->isSetParameter('ctrl')) {
 			$controller = $request->getParameter('ctrl');
 			$controller = ucfirst($controller);

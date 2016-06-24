@@ -1,7 +1,7 @@
 <?php 
 	$this->viewTitle = 'My blog';
     $this->meta[] = array('name' => 'description', 'content' => 'Overview of my blog');
-    $this->js[] = 'homeJs.js';
+    $this->js[] = 'indexJs.js';
 ?>
 
 <?php foreach ($entries as $e): ?>

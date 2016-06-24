@@ -1,6 +1,6 @@
 <?php
 
-class AjaxHomeController extends Controller
+class AjaxIndexController extends Controller
 {
     private $json;
 

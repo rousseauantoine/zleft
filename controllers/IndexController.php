@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends Controller
+class IndexController extends Controller
 {
 
     function index()
@@ -13,7 +13,7 @@ class HomeController extends Controller
 	{
         $model = Model::getInstance('Entry');
 		$entries = $model->getEntries();
-		$this->render('home', array('entries' => $entries));
+		$this->render('index', array('entries' => $entries));
 	}
 
 }

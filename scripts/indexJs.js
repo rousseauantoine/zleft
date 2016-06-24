@@ -5,7 +5,7 @@ $( document ).ready(function() {
 function init(){
     $('#clickMe').on('click',function(event){
         $.ajax({
-            url: "ajaxHome",
+            url: "ajaxIndex",
             type: "POST",
             dataType:'json',
             data: {
