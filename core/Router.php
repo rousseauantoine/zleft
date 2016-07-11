@@ -3,6 +3,7 @@
 require_once 'core/Request.php';
 require_once 'core/View.php';
 require_once 'core/Controller.php';
+require_once 'controllers/MasterController.php';
 
 class Router
 {
@@ -15,7 +16,9 @@ class Router
 			$request = new Request(array_merge($_GET, $_POST));
 			$controller = $this->createController($request);
 			$action = $this->createAction($request);
+            $controller->preExecution($request);
 			$controller->executeAction($action);
+            $controller->postExecution($request);
 		}
 		catch (Exception $e) {
 			$this->manageError($e, $request);

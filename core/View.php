@@ -1,10 +1,13 @@
 <?php
 
 require_once 'Configuration.php';
+require_once 'views/helper/ViewHelper.php';
+//TODO je m'explique pas pourquoi, pour les require_once une fois on part de core et l'autre de views?
 
 //Class managing the generation of the views 
 class View 
 {
+    use Core_ViewHelper;
 
 	// Name of the file associated with the the view
 	private $filename;
@@ -67,13 +70,6 @@ class View
 		}
 		else
 			throw new Exception("$filename not found");
-	}
-
-
-    // Cleans a user entry
-    private function clean($value)
-    {
-        return strip_tags($value);
 	}
 
 }

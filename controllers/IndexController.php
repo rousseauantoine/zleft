@@ -1,6 +1,6 @@
 <?php
 
-class IndexController extends Controller
+class IndexController extends MasterController
 {
 
     function index()
@@ -14,6 +14,7 @@ class IndexController extends Controller
         $model = Model::getInstance('Entry');
 		$entries = $model->getEntries();
 		$this->render('index', array('entries' => $entries));
+        var_dump($_SESSION);
 	}
 
 }

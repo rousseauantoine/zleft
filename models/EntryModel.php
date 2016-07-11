@@ -9,7 +9,7 @@ class EntryModel extends Model
 	public function getEntries() 
 	{
 		$sql = 'SELECT ent_id, ent_title, ent_body, ent_date
-				FROM entry ';
+				FROM entry';
 		$entries = $this->executeSQL($sql);
 		return $entries;
 	}
@@ -35,6 +35,16 @@ class EntryModel extends Model
         $result = array_shift($result);
         $nb = $result['nb'];
         return $nb;
+    }
+
+    public function getTest(){
+        $sql = 'SELECT zleft_acl_resources.label
+				FROM zleft_acl_users
+				INNER JOIN zleft_acl_users2groups ON zleft_acl_users.id = zleft_acl_users2groups.user_id
+				INNER JOIN zleft_acl_groups2resources ON zleft_acl_users2groups.group_id = zleft_acl_groups2resources.group_id
+				INNER JOIN zleft_acl_resources ON zleft_acl_groups2resources.resource_id = zleft_acl_resources.id
+				WHERE zleft_acl_users.id = ?';
+        return $this->executeSQL($sql, array($_SESSION['user']['id']));
     }
 }
 

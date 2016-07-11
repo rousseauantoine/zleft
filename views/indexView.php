@@ -4,7 +4,7 @@
     $this->js[] = 'indexJs.js';
 ?>
 
-<?php foreach ($entries as $e): ?>
+<?php foreach ($entries as $e){ ?>
     <article>
         <header>
             <a href="<?= "entry/index/" . $e['ent_id'] ?>">
@@ -15,7 +15,14 @@
         <p><?= $this->clean($e['ent_body']) ?></p>
     </article>
     <hr />
-<?php endforeach; ?>
-<button id="clickMe">How many entries ?</button><br>
-<div id="numberEntries"></div>
+<?php
+}
+if($this->isUserAllowedToAccessResource('ajaxIndex/getNumberEntries')){
+?>
+    <button id="clickMe">How many entries ?</button><br>
+    <div id="numberEntries"></div>
+<?php
+}
+?>
+
 

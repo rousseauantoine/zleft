@@ -15,36 +15,57 @@ abstract class Controller
 	protected $request;
 
 
+    // Abstract method corresponding to default action
+    // Forces derived classes to implement this action
+    public abstract function index();
+
+    // Executes the action
+    public function executeAction($action)
+    {
+        if (method_exists($this, $action)) {
+            $this->action = $action;
+            $this->{$this->action}();
+        }
+        else {
+            throw new Exception("Action '$action' not defined in class ". get_class($this));
+        }
+    }
+
+    //check whether a user is allowed to access a resource or not
+    public function isUserAllowedToAccessResource($resource){
+        return Model::isUserAllowedToAccessResource($resource);
+    }
+
+    //Executed right after executeAction()
+    public function postExecution($request){}
+
+    //Executed right before executeAction()
+    public function preExecution($request){
+        //the session is started only once
+        if(!isset($_SESSION['zleft_session'])){
+            session_start();
+            $_SESSION['zleft_session'] = 1;
+        }
+    }
+
+    // Displays the view $viewName with the data $dataView
+    protected function redirect($resource)
+    {
+        header("Location: " . Configuration::get('root') . $resource);
+        exit;
+    }
+
+    // Displays the view $viewName with the data $dataView
+    protected function render($viewName, $dataView = array(), $ajax = false)
+    {
+        $view = new View($viewName);
+        return $view->generateView($dataView, $ajax);
+    }
+
 	// Defines the received request
 	public function setRequest(Request $request)
 	{
 		$this->request = $request;
-	}
-
-
-	// Executes the action
-	public function executeAction($action)
-	{
-		if (method_exists($this, $action)) {
-			$this->action = $action;
-			$this->{$this->action}();
-		}
-		else {
-			throw new Exception("Action '$action' not defined in class ". get_class($this));
-		}
-	}
-
-
-	// Abstract method corresponding to default action
-	// Forces derived classes to implement this action
-	public abstract function index();
-
-
-	// Displays the view $viewName with the data $dataView
-	protected function render($viewName, $dataView = array(), $ajax = false)
-	{
-		$view = new View($viewName);
-		return $view->generateView($dataView, $ajax);
 	}
 
 }

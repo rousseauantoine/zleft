@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <base href="<?= $root ?>">
+    <base href="<?= $root ?>/">
     <link rel="stylesheet" href="styles/global.css" />
     <title>404 error - Page not found</title>
 </head>

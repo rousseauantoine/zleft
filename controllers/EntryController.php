@@ -1,6 +1,6 @@
 <?php
 
-class EntryController extends Controller
+class EntryController extends MasterController
 {
 
     public function index() {

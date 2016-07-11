@@ -5,11 +5,10 @@ $( document ).ready(function() {
 function init(){
     $('#clickMe').on('click',function(event){
         $.ajax({
-            url: "ajaxIndex",
+            url: "ajaxIndex/getNumberEntries",
             type: "POST",
             dataType:'json',
             data: {
-                do: "getNumberEntries"
             },
             success: function(data){
                 $('#numberEntries').html(data.output);

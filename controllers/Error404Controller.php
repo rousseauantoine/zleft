@@ -1,6 +1,6 @@
 <?php
 
-class Error404Controller extends Controller
+class Error404Controller extends MasterController
 {
 
     private $error404;
