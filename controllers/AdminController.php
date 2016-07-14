@@ -18,7 +18,6 @@ class AdminController extends MasterController
                 }
             }
         }
-        $this->render('admin');
     }
 
     function logout()

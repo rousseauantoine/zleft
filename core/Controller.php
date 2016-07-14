@@ -14,6 +14,8 @@ abstract class Controller
 	// Received request
 	protected $request;
 
+    // array containing the values given to the view
+    protected $view = array();
 
     // Abstract method corresponding to default action
     // Forces derived classes to implement this action
@@ -24,7 +26,7 @@ abstract class Controller
     {
         if (method_exists($this, $action)) {
             $this->action = $action;
-            $this->{$this->action}();
+            return ($this->{$this->action}());
         }
         else {
             throw new Exception("Action '$action' not defined in class ". get_class($this));
@@ -49,17 +51,17 @@ abstract class Controller
     }
 
     // Displays the view $viewName with the data $dataView
-    protected function redirect($resource)
+    public function redirect($resource)
     {
         header("Location: " . Configuration::get('root') . $resource);
         exit;
     }
 
     // Displays the view $viewName with the data $dataView
-    protected function render($viewName, $dataView = array(), $ajax = false)
+    public function render($viewName, $data = array(), $ajax = false)
     {
         $view = new View($viewName);
-        return $view->generateView($dataView, $ajax);
+        return $view->generateView(array_merge($this->view, $data), $ajax);
     }
 
 	// Defines the received request

@@ -39,11 +39,9 @@ class View
             return $content;
         }
         else {
-            $root = Configuration::get("root", "/");
-
             //Include in the common layout
             $content = $this->generateFile('views/layout.php', array('viewTitle' => $this->viewTitle, 'css' => $this->css,
-                'js' => $this->js, 'meta' => $this->meta, 'content' => $content, 'root' => $root));
+                'js' => $this->js, 'meta' => $this->meta, 'content' => $content, 'root' => Configuration::get("root", "/")));
         }
 		echo $content;
 	}

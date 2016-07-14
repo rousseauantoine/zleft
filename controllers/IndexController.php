@@ -13,8 +13,7 @@ class IndexController extends MasterController
 	{
         $model = Model::getInstance('Entry');
 		$entries = $model->getEntries();
-		$this->render('index', array('entries' => $entries));
-        var_dump($_SESSION);
+		$this->view['entries'] =  $entries;
 	}
 
 }

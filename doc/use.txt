@@ -1,5 +1,5 @@
--Controller Index, 404 are compulsory
--views layout, 404 are compulsory
+-Controller Index, 404 are mandatory
+-views layout, 404, helper/ViewHelper are mandatory
 
 -Ajax calls-
 When calling render() method in the action, set third parameter to true

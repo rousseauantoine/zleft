@@ -13,7 +13,7 @@ class EntryController extends MasterController
 	{
 		$entry      = Model::getInstance('Entry')->getEntry($idEntry);
 		$comments   = Model::getInstance('Comment')->getComments($idEntry);
-        $this->render('entry', array('entry' => $entry, 'comments' => $comments));
+        $this->view = array('entry' => $entry, 'comments' => $comments);
 	}
 
 }

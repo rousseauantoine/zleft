@@ -13,11 +13,17 @@ class Router
 	{
 		try {
 			//Fusion of the GET and POST parameters of the request
+            //todo: how array_merge will react if i put ctrl and action in url ?
 			$request = new Request(array_merge($_GET, $_POST));
 			$controller = $this->createController($request);
 			$action = $this->createAction($request);
             $controller->preExecution($request);
-			$controller->executeAction($action);
+            $return = $controller->executeAction($action);
+			if($return == null){
+                $controller->render($request->getParameter('ctrl'));
+            }else{
+                echo $return;
+            }
             $controller->postExecution($request);
 		}
 		catch (Exception $e) {
