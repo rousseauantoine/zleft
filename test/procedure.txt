@@ -1,0 +1,19 @@
+--Config--
+displayExceptions 0 does not display exceptions
+displayExceptions 1 displays exceptions
+
+--Urls--
+-Wrong controller name -> 404 Header + page
+-wrong action name -> 404 Header + page
+
+--Logins--
+
+-Antoine accesses index, detailed entries and number of entries
+-Jacques accesses index and detailed entries
+-Jacques does not see the number of entries button
+-Jacques cannot access to /ajaxIndex/getNumberEntries
+-Visitor accesses index only
+-Visitor does not see the number of entries button
+-Visitor cannot access to /ajaxIndex/getNumberEntries
+-Log out function works
+-A message displays that login or password is wrong
