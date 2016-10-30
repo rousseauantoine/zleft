@@ -59,8 +59,6 @@ class View
 	private function generateFile($filename, $data) 
 	{
 		if (file_exists($filename)) {
-			// extract() creates a variable for each index in the $data array() and assign its value
-            // can be removed but will have to use $data['index'] in the view file
 			extract($data);
 			ob_start();
 			require $filename;

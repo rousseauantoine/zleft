@@ -3,7 +3,7 @@ $( document ).ready(function() {
 });
 
 function init(){
-    $('#clickMe').on('click',function(event){
+    $('#clickMe').on('click',function(){
         $.ajax({
             url: "ajaxIndex/getNumberEntries",
             type: "POST",
