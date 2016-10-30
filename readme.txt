@@ -3,3 +3,4 @@
     o Front Controller
     o Dev/Prod error mode
     o Error management
+    o User authentication and ACLs
