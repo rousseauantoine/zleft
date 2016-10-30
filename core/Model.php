@@ -37,15 +37,15 @@ abstract class Model
 	}
 
     public static function getInstance($modelName){
-        $classModel = $modelName . 'Model';
-        $fileModel = 'models/' . $classModel . '.php';
+        $modelClass = $modelName . 'Model';
+        $modelFile = 'models/' . $modelClass . '.php';
 
-        if (file_exists($fileModel)) {
-            require_once($fileModel);
-            return new $classModel();
+        if (file_exists($modelFile)) {
+            require_once($modelFile);
+            return new $modelClass();
         }
         else
-            throw new Exception("File '$classModel' not found");
+            throw new Exception("File '$modelClass' not found");
     }
 
     public static function isUserAllowedToAccessResource($resource){

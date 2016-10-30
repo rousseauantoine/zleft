@@ -16,9 +16,9 @@ class Router
             //todo: how array_merge will react if i put ctrl and action in url ?
 			$request = new Request(array_merge($_GET, $_POST));
 			$controller = $this->createController($request);
-			$action = $this->createAction($request);
+			$actionName = $this->createActionName($request);
             $controller->preExecution($request);
-            $return = $controller->executeAction($action);
+            $return = $controller->executeAction($actionName);
 			if($return == null){
                 $controller->render($request->getParameter('ctrl'));
             }else{
@@ -35,33 +35,31 @@ class Router
 	// Creates appropriate controller depending on the received request
 	private function createController(Request $request)
 	{
-		$controller = 'Index';  // default
+		$controllerName = 'Index';  // default
 		if ($request->isSetParameter('ctrl')) {
-			$controller = $request->getParameter('ctrl');
-			$controller = ucfirst($controller);
+            $controllerName = ucfirst($request->getParameter('ctrl'));
 		}
 		// Controller's file name
-		$classController = $controller . 'Controller';
-		$fileController = 'controllers/' . $classController . '.php';
+		$controllerClass = $controllerName . 'Controller';
+		$controllerFile = 'controllers/' . $controllerClass . '.php';
 
-		if (file_exists($fileController)) {
-			// Implementation of the request's controller
-			require($fileController);
-			$controller = new $classController();
+		if (file_exists($controllerFile)) {
+			require($controllerFile);
+			$controller = new $controllerClass();
 			$controller->setRequest($request);
 			return $controller;
 		}
 		else
-			throw new Exception("File '$fileController' not found");
+			throw new Exception("File '$controllerFile' not found");
 	}
 
 
 	// Chooses the action to be executed depending on the received request
-	private function createAction(Request $request) {
-		$action = 'index';
+	private function createActionName(Request $request) {
+		$actionName = 'index';
 		if ($request->isSetParameter('action'))
-			$action = $request->getParameter('action');
-		return $action;
+            $actionName = $request->getParameter('action');
+		return $actionName;
 	}
 
 
