@@ -15,6 +15,10 @@ class AdminController extends MasterController
                     $auth = array_shift($auth);
                     $_SESSION['user'] = array();
                     $_SESSION['user']['id'] = $auth['id'];
+                    $this->redirect('/index/index');
+                }else{
+                    $invalidCredentials = $this->render('partials/invalidCredentials', array('signature' => 'team'), true);
+                    $this->view = array('flash' => $invalidCredentials);
                 }
             }
         }

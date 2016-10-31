@@ -10,7 +10,7 @@ class AjaxIndexController extends MasterController
     public function getNumberEntries()
     {
         $nb = Model::getInstance('Entry')->getNumberEntries();
-        $this->json['output'] = $this->render('ajaxNumberEntries', array('nb' => $nb), true);
+        $this->json['output'] = $this->render('partials/ajaxNumberEntries', array('nb' => $nb), true);
         return (json_encode($this->json));
     }
 

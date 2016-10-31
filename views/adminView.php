@@ -10,9 +10,11 @@ if(!$this->isUserConnected()){
         <input type="submit" value="Connection">
     </form>
 <?php
+    if(isset($flash))
+        echo $flash;
 }else{
 ?>
-    <div>Hello, you are connected</div>
+    <div>Hello, below stands your admin panel</div>
 <?php
 }
 ?>
