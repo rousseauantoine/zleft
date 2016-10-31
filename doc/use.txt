@@ -3,3 +3,6 @@
 
 -Ajax calls-
 When calling render() method in the action, set third parameter to true
+
+-Partials-
+See invalidCredentials
