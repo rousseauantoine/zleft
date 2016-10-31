@@ -34,13 +34,13 @@ class View
 	public function generateView($data, $ajax)
 	{
 		// Specific part of the view
-		$content = $this->generateFile($this->filename, $data);
+		$content = $this->generateContent($this->filename, $data);
         if($ajax) {
             return $content;
         }
         else {
             //Include in the common layout
-            $content = $this->generateFile('views/layout.php', array('viewTitle' => $this->viewTitle, 'css' => $this->css,
+            $content = $this->generateContent('views/layout.php', array('viewTitle' => $this->viewTitle, 'css' => $this->css,
                 'js' => $this->js, 'meta' => $this->meta, 'content' => $content, 'root' => Configuration::get("root", "/")));
         }
 		echo $content;
@@ -50,13 +50,13 @@ class View
     public function throw404($data = array())
     {
         $data['root'] = Configuration::get('root', '/');
-        $view = $this->generateFile('views/404.php', $data);
+        $view = $this->generateContent('views/404.php', $data);
         header('HTTP/1.0 404 Not Found');
         echo $view;
     }
 
 	// Generates a view file and returns the result
-	private function generateFile($filename, $data) 
+	private function generateContent($filename, $data)
 	{
 		if (file_exists($filename)) {
 			extract($data);
