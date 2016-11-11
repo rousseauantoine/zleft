@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `comment` (
 --
 
 INSERT INTO `comment` (`com_id`, `com_author`, `com_body`, `ent_id`, `com_date`) VALUES
-(1, 'Pellequiere01', 'Sed id diam quam. Praesent eget venenatis libero.', 1, '2014-01-06 10:00:00'),
-(2, 'Anonymous', 'Lol', 1, '2014-01-06 12:00:00');
+(1, 'Pellequiere01', 'Sed id diam quam. Praesent eget venenatis libero.', 2, '2014-01-06 10:00:00'),
+(2, 'Anonymous', 'Lol', 2, '2014-01-06 12:00:00');
 
 -- --------------------------------------------------------
 

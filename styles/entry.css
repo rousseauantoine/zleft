@@ -1,0 +1,16 @@
+.comment{
+    background-color:#eee;
+    padding: 5px;
+    margin-bottom:10px;
+    display:inline-block;
+    border-radius:10px 10px 10px 0;
+}
+.comment p{
+    margin:0;
+}
+.commentAuthor{
+    font-weight:bold;
+}
+.commentContent{
+    font-style: italic;
+}

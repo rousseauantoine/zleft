@@ -1,0 +1,16 @@
+input{
+    display:block;
+    margin-bottom: 10px;
+    width: 100px;
+    font-size:1em;
+}
+input[type="submit"]{
+    width:105px;
+}
+.error{
+    display:inline-block;
+    margin-top:20px;
+    background-color: #fc8162;
+    padding: 10px;
+    border: 1px solid #d33e19;
+}

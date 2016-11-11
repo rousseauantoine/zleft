@@ -9,7 +9,8 @@ class EntryModel extends Model
 	public function getEntries() 
 	{
 		$sql = 'SELECT ent_id, ent_title, ent_body, ent_date
-				FROM entry';
+				FROM entry
+				ORDER BY ent_date DESC';
 		$entries = $this->executeSQL($sql);
 		return $entries;
 	}

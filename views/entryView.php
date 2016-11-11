@@ -1,23 +1,27 @@
 <?php 
 	$this->viewTitle = $entry['ent_title'];
-	array_push($this->css, 'entryCss.css', 'entryCss2.css');
+	$this->css[] = 'entry.css';
     $this->meta[] = array('name' => 'description', 'content' => 'Overview of my blog');
     $this->meta[] = array('name' => 'author', 'content' => 'Blabla');
 ?>
 
 <article>
-    <header>
-        <h1><?= $this->clean($entry['ent_title']) ?></h1>
-        <time><?= $entry['ent_date'] ?></time>
-    </header>
+    <h1 class="articleTitle">
+        <?= $this->clean($entry['ent_title']) ?>
+    </h1>
+    <time><?= $entry['ent_date'] ?></time>
     <p><?= $this->clean($entry['ent_body']) ?></p>
-</article>
-<hr />
-<header>
-    <h1>Comments</h1>
-</header>
+
 <?php foreach ($comments as $c): ?>
-    <p><?= $this->clean($c['com_author']) ?></p>
-    <p><?= $this->clean($c['com_body']) ?></p>
+    <div class="comment">
+        <p class="commentAuthor">
+            <?= $this->clean($c['com_author']) ?>
+        </p>
+        <p class="commentContent">
+            <?= $this->clean($c['com_body']) ?>
+        </p>
+    </div>
+    <br>
 <?php endforeach; ?>
+</article>
 

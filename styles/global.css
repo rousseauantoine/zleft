@@ -1,5 +1,43 @@
 html{
 	background-color:#eee;
+    height:100%;
+}
+body{
+    width: 760px;
+    background-color: #fff;
+    margin: auto;
+    height:100%;
+    font-family: Verdana, Geneva, sans-serif;
+}
+.wrapper{
+    padding:20px;
+}
+a{
+    color:#629dfc;
+    text-decoration:none;
+}
+a:hover{
+    color:#629dfc;
+    text-decoration:underline;
+}
+input[type="submit"], button{
+    border:0;
+    padding:0;
+    height:1.7em;
+    font-size:1em;
+    cursor:pointer;
+    background-color:#eee;
+}
+
+header.top{
+    text-align:right;
+}
+.articleTitle{
+    display:inline;
+}
+time{
+    font-size:0.8em;
+    color:#999;
 }
 .signature{
     margin-left:50px;
